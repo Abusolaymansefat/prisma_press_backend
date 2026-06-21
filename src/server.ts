@@ -1,7 +1,8 @@
 import app from "./app";
+import config from "./config";
 import { prisma } from "./lib/prisma";
 
-const PORT = process.env.port || 3000;
+const PORT = config.port;
 
 
 async function main(){
@@ -15,7 +16,7 @@ async function main(){
             console.error("Error starting the server:", error);
             await prisma.$disconnect();
             process.exit(1);
-      }
-}
+      };
+};
 
 main();
