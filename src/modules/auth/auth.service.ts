@@ -4,6 +4,7 @@ import { loginUser } from "./auth.interface";
 import jwt, { SignOptions } from "jsonwebtoken";
 import config from "../../config";
 import { jwtUtils } from "../../utils/jwt";
+
 const loginUserDB = async (payload: loginUser) => {
       const { email, password } = payload;
 
@@ -25,6 +26,7 @@ const loginUserDB = async (payload: loginUser) => {
             role: user.role
       }
 
+     
 
       // const accessToken = jwt.sign(
       //       jwtPayload,
