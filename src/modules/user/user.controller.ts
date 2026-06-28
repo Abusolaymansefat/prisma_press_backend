@@ -108,7 +108,7 @@ const updateMyProfile = catchAsync(async(req: Request, res: Response, next: Next
             }
       })
 })
-
+//controller service, router interface
 
 export const userController = {
       registerUser,
