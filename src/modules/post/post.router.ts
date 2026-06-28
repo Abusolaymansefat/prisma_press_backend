@@ -9,7 +9,7 @@ router.post("/", auth(Role.ADMIN, Role.AUTHOR, Role.USER), postController.create
 
 router.get("/", postController.getAllPost);
 
-router.get("/status",auth(Role.ADMIN), postController.getPostByStatus);
+router.get("/status", auth(Role.ADMIN), postController.getPostByStatus);
 
 router.get("/my-posts", auth(Role.ADMIN, Role.AUTHOR, Role.USER), postController.getPostByAuthor);
 
@@ -19,4 +19,5 @@ router.patch("/:postId", auth(Role.ADMIN, Role.AUTHOR, Role.USER), postControlle
 router.delete("/:postId", auth(Role.ADMIN, Role.AUTHOR, Role.USER), postController.deletePost);
 
 
-export  const postRouter = router;
+
+export const postRouter = router;
