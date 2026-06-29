@@ -337,6 +337,90 @@
             }
           },
           "response": []
+        },
+        {
+          "name": "get post stats",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/posts/status",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "posts",
+                "status"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Comment",
+      "item": [
+        {
+          "name": "Get create Comment",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"content\": \"This is a comment\",\r\n  \"postId\": \"708805cf-f1b5-40e0-be96-b047ee35f40b\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/comments",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "comments"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get Comment  By AuthorId",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"content\": \"This is a comment\",\r\n  \"postId\": \"708805cf-f1b5-40e0-be96-b047ee35f40b\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/comments/author/c490a100-7426-40c1-afd3-a35b74f58751",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "comments",
+                "author",
+                "c490a100-7426-40c1-afd3-a35b74f58751"
+              ]
+            }
+          },
+          "response": []
         }
       ]
     }
