@@ -49,7 +49,17 @@ const getPostById = catchAsync(async (req: Request, res: Response, next: NextFun
       })
 })
 
-const getPostByStatus = catchAsync(async (req: Request, res: Response, next: NextFunction) => { })
+const getPostByStatus = catchAsync(async (req: Request, res: Response, next: NextFunction) => { 
+
+      const result = await postService.getPostByStatus();
+
+      sendResponse(res, {
+            success: true,
+            statusCode: httpStatus.OK,
+            message: "post Retrieved successfully",
+            data: result
+      })
+})
 
 const getPostByAuthor = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
 

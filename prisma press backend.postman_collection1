@@ -1,134 +1,344 @@
 {
   "info": {
-    "_postman_id": "a5f077be-03ec-4289-8c62-b1dea61b2e74",
+    "_postman_id": "e1f2c33f-e07d-422f-8400-b834f977611d",
     "name": "prisma press backend",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "54718571",
-    "_collection_link": "https://go.postman.co/collection/54718571-a5f077be-03ec-4289-8c62-b1dea61b2e74?source=collection_link"
+    "_collection_link": "https://go.postman.co/collection/54718571-e1f2c33f-e07d-422f-8400-b834f977611d?source=collection_link"
   },
   "item": [
     {
-      "name": "users",
-      "request": {
-        "method": "POST",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\n    \"name\": \"abu solayman sefat 2\",\n    \"email\": \"abusolaymansefat2@example.com\",\n    \"password\": \"password1234\",\n    \"profilePhoto\" : \"https://i.ibb.co.com/DfHKWrbw/Whats-App-Image-2025-12-20-at-8-38-14-PM.jpg\"\n}",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        },
-        "url": {
-          "raw": "http://localhost:5000/api/users/register",
-          "protocol": "http",
-          "host": [
-            "localhost"
-          ],
-          "port": "5000",
-          "path": [
-            "api",
-            "users",
-            "register"
-          ]
-        }
-      },
-      "response": []
-    },
-    {
       "name": "auth",
-      "request": {
-        "method": "POST",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n    \"email\": \"abusolaymansefat2@example.com\",\r\n    \"password\": \"password1234\"\r\n}",
-          "options": {
-            "raw": {
-              "language": "json"
+      "item": [
+        {
+          "name": "login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"user1@example.com\",\r\n    \"password\": \"password123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
             }
-          }
+          },
+          "response": []
         },
-        "url": {
-          "raw": "http://localhost:5000/api/auth/login",
-          "protocol": "http",
-          "host": [
-            "localhost"
-          ],
-          "port": "5000",
-          "path": [
-            "api",
-            "auth",
-            "login"
-          ]
+        {
+          "name": "refresh-token",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"abu solayman sefat12\",\r\n    \"email\": \"abusolaymansefat2@example.com\",\r\n    \"bio\": \"new bio added\",\r\n    \"profilePhoto\" : \"https://i.ibb.co.com/DfHKWrbw/Whats-App-Image-2025-12-20-at-8-38-14-PM.jpg\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/auth/refresh-token",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "auth",
+                "refresh-token"
+              ]
+            }
+          },
+          "response": []
         }
-      },
-      "response": []
+      ]
     },
     {
-      "name": "update my-profile",
-      "request": {
-        "method": "PUT",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n    \"name\": \"abu solayman sefat12\",\r\n    \"email\": \"abusolaymansefat2@example.com\",\r\n    \"bio\": \"new bio added\",\r\n    \"profilePhoto\" : \"https://i.ibb.co.com/DfHKWrbw/Whats-App-Image-2025-12-20-at-8-38-14-PM.jpg\"\r\n}",
-          "options": {
-            "raw": {
-              "language": "json"
+      "name": "user",
+      "item": [
+        {
+          "name": "register",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"abu solayman sefat 2\",\n    \"email\": \"abusolaymansefat2@example.com\",\n    \"password\": \"password1234\",\n    \"profilePhoto\" : \"https://i.ibb.co.com/DfHKWrbw/Whats-App-Image-2025-12-20-at-8-38-14-PM.jpg\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/users/register",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "users",
+                "register"
+              ]
             }
-          }
+          },
+          "response": []
         },
-        "url": {
-          "raw": "http://localhost:5000/api/users/my-profile",
-          "protocol": "http",
-          "host": [
-            "localhost"
-          ],
-          "port": "5000",
-          "path": [
-            "api",
-            "users",
-            "my-profile"
-          ]
+        {
+          "name": "update my-profile",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"abu solayman sefat12\",\r\n    \"email\": \"abusolaymansefat2@example.com\",\r\n    \"bio\": \"new bio added\",\r\n    \"profilePhoto\" : \"https://i.ibb.co.com/DfHKWrbw/Whats-App-Image-2025-12-20-at-8-38-14-PM.jpg\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/users/my-profile",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "users",
+                "my-profile"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get my profile",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/users/me",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "users",
+                "me"
+              ]
+            }
+          },
+          "response": []
         }
-      },
-      "response": []
+      ]
     },
     {
-      "name": "http://localhost:5000/api/users/me",
-      "protocolProfileBehavior": {
-        "disableBodyPruning": true
-      },
-      "request": {
-        "method": "GET",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "",
-          "options": {
-            "raw": {
-              "language": "json"
+      "name": "post",
+      "item": [
+        {
+          "name": "create Post",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"My secend Post user1@example.com44\",\r\n  \"content\": \"Content of the post goes here2.\",\r\n  \"thumbnail\": \"https://example.com/thumbnail.jpg\",\r\n  \"isFeatured\": false,\r\n  \"status\": \"PUBLISHED\",\r\n  \"tags\": [\"typescript\", \"prisma\", \"express\"]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/posts",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "posts"
+              ]
             }
-          }
+          },
+          "response": []
         },
-        "url": {
-          "raw": "http://localhost:5000/api/users/me",
-          "protocol": "http",
-          "host": [
-            "localhost"
-          ],
-          "port": "5000",
-          "path": [
-            "api",
-            "users",
-            "me"
-          ]
+        {
+          "name": "get all posts",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/posts",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "posts"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get post by id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/posts/708805cf-f1b5-40e0-be96-b047ee35f40b",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "posts",
+                "708805cf-f1b5-40e0-be96-b047ee35f40b"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get all my post",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/posts/my-posts",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "posts",
+                "my-posts"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "updated post",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"My secend Post user1@example.com !!\",\r\n  \"content\": \"Content of the post goes here!!.\",\r\n  \"thumbnail\": \"https://example.com/thumbnail.jpg\",\r\n  \"isFeatured\": false,\r\n  \"status\": \"PUBLISHED\",\r\n  \"tags\": [\"typescript\", \"prisma\", \"express\", \"javascript\"]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/posts/4994c844-5e7e-468a-b234-3390c2ed3284",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "posts",
+                "4994c844-5e7e-468a-b234-3390c2ed3284"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "deleted",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"My secend Post and Updated \",\r\n  \"content\": \"Content of the post goes here & Updated.\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/posts/9fcb4081-1940-4fe1-924d-2c51ae316e8f",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "posts",
+                "9fcb4081-1940-4fe1-924d-2c51ae316e8f"
+              ]
+            }
+          },
+          "response": []
         }
-      },
-      "response": []
+      ]
     }
   ]
 }
