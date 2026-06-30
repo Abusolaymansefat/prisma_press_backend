@@ -17,7 +17,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"email\": \"user1@example.com\",\r\n    \"password\": \"password123\"\r\n}",
+              "raw": "{\r\n    \"email\": \"abusolaymansefat2@example.com\",\r\n    \"password\": \"password1234\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -215,7 +215,7 @@
               }
             },
             "url": {
-              "raw": "http://localhost:5000/api/posts",
+              "raw": "http://localhost:5000/api/posts?tags=[\"typescript\"]",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -224,6 +224,22 @@
               "path": [
                 "api",
                 "posts"
+              ],
+              "query": [
+                {
+                  "key": "limet",
+                  "value": "1",
+                  "disabled": true
+                },
+                {
+                  "key": " page",
+                  "value": "2",
+                  "disabled": true
+                },
+                {
+                  "key": "tags",
+                  "value": "[\"typescript\"]"
+                }
               ]
             }
           },
@@ -290,7 +306,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"title\": \"My secend Post user1@example.com !!\",\r\n  \"content\": \"Content of the post goes here!!.\",\r\n  \"thumbnail\": \"https://example.com/thumbnail.jpg\",\r\n  \"isFeatured\": false,\r\n  \"status\": \"PUBLISHED\",\r\n  \"tags\": [\"typescript\", \"prisma\", \"express\", \"javascript\"]\r\n}",
+              "raw": "{\r\n  \"title\": \"My secend Post user1@example.com\",\r\n  \"content\": \"Content of the post goes here!!.\",\r\n  \"thumbnail\": \"https://example.com/thumbnail.jpg\",\r\n  \"isFeatured\": false,\r\n  \"status\": \"PUBLISHED\",\r\n  \"tags\": [\"typescript\", \"prisma\", \"express\", \"javascript\"]\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -298,7 +314,7 @@
               }
             },
             "url": {
-              "raw": "http://localhost:5000/api/posts/4994c844-5e7e-468a-b234-3390c2ed3284",
+              "raw": "http://localhost:5000/api/posts/71a32061-ab42-49b2-9bed-4e5a287a3e5f",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -307,7 +323,7 @@
               "path": [
                 "api",
                 "posts",
-                "4994c844-5e7e-468a-b234-3390c2ed3284"
+                "71a32061-ab42-49b2-9bed-4e5a287a3e5f"
               ]
             }
           },
@@ -371,7 +387,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"content\": \"This is a comment\",\r\n  \"postId\": \"708805cf-f1b5-40e0-be96-b047ee35f40b\"\r\n}",
+              "raw": "{\r\n  \"content\": \"This is a comment data.updateComment\",\r\n  \"postId\": \"708805cf-f1b5-40e0-be96-b047ee35f40b\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -406,7 +422,7 @@
               "raw": "{\r\n  \"content\": \"This is a comment\",\r\n  \"postId\": \"708805cf-f1b5-40e0-be96-b047ee35f40b\"\r\n}"
             },
             "url": {
-              "raw": "http://localhost:5000/api/comments/author/c490a100-7426-40c1-afd3-a35b74f58751",
+              "raw": "http://localhost:5000/api/comments/author/49262455-9cc2-4329-b492-c511bbd9ac46",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -416,7 +432,107 @@
                 "api",
                 "comments",
                 "author",
-                "c490a100-7426-40c1-afd3-a35b74f58751"
+                "49262455-9cc2-4329-b492-c511bbd9ac46"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get Comment By Comment Id",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"content\": \"This is a comment\",\r\n  \"postId\": \"708805cf-f1b5-40e0-be96-b047ee35f40b\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/comments/49262455-9cc2-4329-b492-c511bbd9ac46",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "comments",
+                "49262455-9cc2-4329-b492-c511bbd9ac46"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update Comment",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"content\": \"This is a comment data !!!\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/comments/708805cf-f1b5-40e0-be96-b047ee35f40b",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "comments",
+                "708805cf-f1b5-40e0-be96-b047ee35f40b"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "patch moderate Comment",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"content\": \"This is a comment data !!!\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/comments/708805cf-f1b5-40e0-be96-b047ee35f40b/moderate",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "comments",
+                "708805cf-f1b5-40e0-be96-b047ee35f40b",
+                "moderate"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete count",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/comments/708805cf-f1b5-40e0-be96-b047ee35f40b",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "comments",
+                "708805cf-f1b5-40e0-be96-b047ee35f40b"
               ]
             }
           },

@@ -1,6 +1,7 @@
 import { commentStatus, postStatus } from "../../../generated/prisma/enums";
+import { PostWhereInput } from "../../../generated/prisma/models";
 import { prisma } from "../../lib/prisma";
-import { ICreatePostPayload, IUpdatePostPayload } from "./post.interface";
+import { ICreatePostPayload, IPostQuery, IUpdatePostPayload } from "./post.interface";
 
 const createPost = async (payload: ICreatePostPayload, userId: string) => {
 
@@ -14,9 +15,214 @@ const createPost = async (payload: ICreatePostPayload, userId: string) => {
       return result
 };
 
-const getAllPost = async () => {
+
+
+const getAllPost = async (query: IPostQuery) => {
+
+      const limit = query.limit ? Number(query.limit) : 10;
+      const page = query.page ? Number(query.page) : 1;
+      const skip = (page - 1) * limit;
+
+      const sortBy = query.sortBy ? query.sortBy : "createdAt";
+      const sortOrder = query.sortOrder ? query.sortOrder : "desc";
+      const tags = query.tags ? JSON.parse(query.tags as string) : null;
+
+      const tagsArray = Array.isArray(tags) ? tags : [];
+
+      const andConditions: PostWhereInput[] = [];
+
+      if (query.searchTerm) {
+
+            andConditions.push({
+                  OR: [
+                        {
+                              title: {
+                                    contains: query.searchTerm,
+                                    mode: "insensitive"
+                              }
+                        },
+                        {
+                              content: {
+                                    contains: query.searchTerm,
+                                    mode: "insensitive"
+                              }
+                        }
+                  ]
+            })
+      }
+
+      if (query.title) {
+
+            andConditions.push({
+                  title: query.title
+            })
+      }
+
+      if (query.content) {
+            andConditions.push({
+                  content: query.content
+            })
+      }
+
+      if (query.authorId) {
+            andConditions.push({
+                  authorId: query.authorId
+            })
+      }
+
+      if (query.isFeatured) {
+            andConditions.push({
+                  isFeatured: Boolean(query.isFeatured)
+            })
+      }
+
+      if (query.tags && tagsArray.length > 0) {
+            andConditions.push({
+                  tags: {
+                        hasSome: tagsArray
+                  }
+            })
+      }
+
+      if (query.status) {
+            andConditions.push({
+                  status: query.status
+            })
+      }
 
       const posts = await prisma.post.findMany({
+
+            //filter / exact match without and operator
+            // where:{
+            //       title: "My secend Post and Updated! ",
+            //       content: "leow messi",
+            // },
+
+
+            //filter / exact match with and operator
+            // where: {
+            //       AND: [
+            //             {title: "My secend Post and Updated! "},
+            //             {content: "leow messi"},
+            //       ]
+            // },
+
+            // searching / partial match with or operator
+
+            // where: {
+            // title: {
+            //       contains: "messi",
+            //       mode: "insensitive"
+            // },
+            // content: {
+            //       contains: "messi",
+            //       mode: "insensitive"
+            // }
+            // },
+
+            // searching / partial match with or operator
+            // where: {
+            //       OR: [
+            //             {title: {
+            //             contains: "messi",
+            //             mode: "insensitive"
+            //       }
+            //       },
+            //             {content: {
+            //             contains: "messi",
+            //             mode: "insensitive"
+            //       }}
+            //       ]
+            // },
+
+            // combining search(or operator) & filtering(and operator) with and operator
+
+            // where: {
+            //       // searching & filtering
+            //       AND: [
+            //             {
+            //                   // search title or comments content
+            //                   OR: [
+            //                         {
+            //                               title: {
+            //                                     contains: "messi",
+            //                                     mode: "insensitive"
+            //                               }
+            //                         },
+            //                         {
+            //                               comments: {
+            //                                     some: {
+            //                                           content: {
+            //                                                 contains: "messi",
+            //                                                 mode: "insensitive"
+            //                                           }
+            //                                     }
+            //                               }
+            //                         }
+            //                   ]
+            //             },
+
+            //             // filtering
+            //             {
+            //                   title: "leow messi"
+            //             },
+            //             {
+            //                   content: "leow messi"
+            //             }
+            //       ]
+            // },
+            // take: 1,
+            // take: 2,
+
+            // skip: 1,
+            // skip: 2,
+            // skip: 3,
+
+
+
+            //dynamic search filtering with and operator
+            // where: {
+            //       AND: [
+            //             query.searchTerm ? {
+            //                   OR: [
+            //                         {
+            //                               title: {
+            //                                     contains: query.searchTerm,
+            //                                     mode: "insensitive"
+            //                               }
+            //                         },
+            //                         {
+            //                               comments: {
+            //                                     some: {
+            //                                           content: {
+            //                                                 contains: query.searchTerm,
+            //                                                 mode: "insensitive"
+            //                                           }
+            //                                     }
+            //                               }
+            //                         }
+            //                   ]
+            //             } : {},
+            //             // title filtering
+            //             query.title ? { title: query.title } : {},
+            //             // content filtering
+            //             query.content ? { content: query.content } : {}
+            //       ]
+            // },
+
+
+            where: {
+                  AND: andConditions
+            },
+
+            // dynamic pagination & sorting
+            take: limit,
+            skip: skip,
+
+            orderBy: {
+                  //sortBy : sortOrder
+                  [sortBy]: sortOrder
+            },
             include: {
                   author: {
                         omit: {
@@ -30,6 +236,7 @@ const getAllPost = async () => {
       return posts;
 
 };
+
 
 const getPostById = async (postId: string) => {
       // const post = await prisma.post.findUnique({
