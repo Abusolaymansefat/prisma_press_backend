@@ -90,6 +90,8 @@ const getAllPost = async (query: IPostQuery) => {
             })
       }
 
+      // 
+
       const posts = await prisma.post.findMany({
 
             //filter / exact match without and operator

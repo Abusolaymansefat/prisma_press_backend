@@ -6,13 +6,14 @@ export const catchAsync = (fn: RequestHandler) => {
             try {
                   await fn(req, res, next);
             } catch (error) {
-                  console.error(error)
-                  res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
-                        success: false,
-                        statusCode: httpStatus.INTERNAL_SERVER_ERROR,
-                        message: (error as Error).message || "An error occurred",
-                        error: (error as Error).message
-                  })
+                  // console.error(error)
+                  // res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
+                  //       success: false,
+                  //       statusCode: httpStatus.INTERNAL_SERVER_ERROR,
+                  //       message: (error as Error).message || "An error occurred",
+                  //       error: (error as Error).message
+                  // })
+                  next(error)
             }
       }
 }

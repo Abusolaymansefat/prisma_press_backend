@@ -12,9 +12,9 @@ const registerUserIntoDB = async(payload: RegisterUserPlayload) => {
             where: { email }
       })
 
-      if (isUserExist) {
-            throw new Error("User already exists with this email.");
-      }
+      // if (isUserExist) {
+      //       throw new Error("User already exists with this email.");
+      // }
 
       const hashedPassword = await bcrypt.hash(password, Number(config.bcrypt_salt_rounds));
 
