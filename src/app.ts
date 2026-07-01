@@ -11,6 +11,7 @@ import { postRouter } from "./modules/post/post.router";
 import { commentRouter } from "./modules/comment/comment.router";
 import { notFoundMiddleware } from "./middieware/notFound";
 import { globalErrorHandler } from "./middieware/globalError";
+import { subscriptionRouter } from "./modules/subscription/subscription.route";
 
 const app: Application = express();
 
@@ -35,6 +36,7 @@ app.use("/api/auth", authRouter);
 
 app.use("/api/posts", postRouter);
 app.use("/api/comments", commentRouter);
+app.use("/api/subscription", subscriptionRouter)
 
 // app.use((req: Request, res: Response) => {
 //       res.status(404).json({
